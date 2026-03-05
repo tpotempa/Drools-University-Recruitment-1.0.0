@@ -1,0 +1,18 @@
+package pl.edu.atar.universityrecruitment.rules.knowledgeable
+
+import pl.edu.atar.universityrecruitment.Candidate;
+
+// Kwalifikacja kobiet
+rule "Women qualification (three_sets_of_rules_salience_lock-on-active_bonus_MODIFY)"
+    dialect "java"
+    salience 200
+    lock-on-active true
+    when
+        $uc : Candidate(schoolType == "Technical")
+    then
+        modify($uc) {
+            setExamResult($uc.getExamResult() + 25)
+        }
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end

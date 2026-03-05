@@ -1,0 +1,21 @@
+package pl.edu.atar.universityrecruitment.rules.basic
+
+import pl.edu.atar.universityrecruitment.Candidate;
+
+// Kwalifikacja olimpijska
+rule "Olympic Qualification (default agenda / do_not_focus_automatically)"
+    // Reguły bez przypisanej agenda-group są przyporządkowane do domyślnej agendy 'DEFAULT' / 'MAIN'!
+    // Agenda 'DEFAULT' / 'MAIN' jest w procesie wnioskowanie ZAWSZE wywoływana tj. uzyskuje FOCUS.
+    // Wywołanie jest niejawne i odbywa się po jawnych wywołaniach agend.
+    // Aby wykonać testy automatycznego aktywowania n/w reguły nie należy jej przypisywać do żadnej agendy (tj. zakomentować wiersz zawierający parametr agenda-group).
+    // Aby wyłączyć automatyczne aktywowania n/w reguły należy ją przypisać do agendy (tj. odkomentować wiersz zawierający parametr agenda-group).
+    dialect "java"
+    agenda-group "do_not_focus_automatically"
+    when
+        $uc : Candidate(olympicFinalist == true)
+    then
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Olympic qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end

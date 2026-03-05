@@ -1,0 +1,73 @@
+package pl.edu.atar.universityrecruitment.rules.virtuoso.noobligatory
+
+import pl.edu.atar.universityrecruitment.Candidate;
+
+// Informatyka
+rule "Exam Qualification / Informatyka (exam_result_calculation)"
+    dialect "java"
+    salience 100
+    when
+        $uc : Candidate(fieldOfStudy == "Informatyka", examResult >= 200.0)
+    then
+        $uc.appendLogger("Total candidate exam result = " + $uc.getExamResult());
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Exam qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end
+
+// Automatyka i robotyka
+rule "Exam Qualification / Automatyka i robotyka (exam_result_calculation)"
+    dialect "java"
+    salience 100
+    when
+        $uc : Candidate(fieldOfStudy == "Automatyka i robotyka", examResult >= 130.0)
+    then
+        $uc.appendLogger("Total candidate exam result = " + $uc.getExamResult());
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Exam qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end
+
+// Elektrotechnika
+rule "Exam Qualification / Elektrotechnika (exam_result_calculation)"
+    dialect "java"
+    salience 250
+    when
+        $uc : Candidate(fieldOfStudy == "Elektrotechnika", examResult >= 80.0)
+    then
+        $uc.appendLogger("Total candidate exam result = " + $uc.getExamResult() + ". Minimum required exam result 80.0D");
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Exam qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end
+
+// Pielęgniarstwo
+rule "Exam Qualification / Pielęgniarstwo (exam_result_calculation)"
+    dialect "java"
+    salience 250
+    when
+        $uc : Candidate(fieldOfStudy == "Pielęgniarstwo", examResult >= 180.0)
+    then
+        $uc.appendLogger("Total candidate exam result = " + $uc.getExamResult() + ". Minimum required exam result 180.0D");
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Exam qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end
+
+// Psychologia
+rule "Exam Qualification / Psychologia (exam_result_calculation)"
+    dialect "java"
+    salience 250
+    when
+        $uc : Candidate(fieldOfStudy == "Psychologia", examResult >= 150.0)
+    then
+        $uc.appendLogger("Total candidate exam result = " + $uc.getExamResult() + ". Minimum required exam result 150.0D");
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Exam qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end

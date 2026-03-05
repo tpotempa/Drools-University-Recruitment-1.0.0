@@ -1,0 +1,91 @@
+package pl.edu.atar.universityrecruitment.rules.virtuoso.noobligatory
+
+import pl.edu.atar.universityrecruitment.Candidate;
+import pl.edu.atar.universityrecruitment.ExamSubjectResult;
+
+// Kwalifikacja na podstawie egzaminu : Sumowanie wyniku przedmiotu egzaminacyjnego
+
+// Informatyka
+rule "Subject result summation / Informatyka (exam_result_calculation)"
+    dialect "java"
+    salience 400
+    when
+        $uc : Candidate(fieldOfStudy == 'Informatyka')
+        $esr : ExamSubjectResult(examSubject in ('matematyka', 'informatyka'))
+    then
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired! " +
+                         "Exam result (sum of points) = " + $uc.getExamResult() + " + " + $esr.getExamResult() + " (" + $esr.getExamSubject() + ")");
+        modify($uc) {
+            setExamResult($uc.getExamResult() + $esr.getExamResult())
+        }
+        retract($esr);
+end
+
+// Automatyka i robotyka
+rule "Subject result summation / Automatyka i robotyka (exam_result_calculation)"
+    dialect "java"
+    salience 400
+    when
+        $uc : Candidate(fieldOfStudy == 'Automatyka i robotyka')
+        $esr : ExamSubjectResult(examSubject in ('matematyka'))
+    then
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired! " +
+                         "Exam result (sum of points) = " + $uc.getExamResult() + " + " + $esr.getExamResult() + " (" + $esr.getExamSubject() + ")");
+        modify($uc) {
+            setExamResult($uc.getExamResult() + $esr.getExamResult())
+        }
+        retract($esr);
+end
+
+// Elektrotechnika
+rule "Subject result summation / Elektrotechnika (exam_result_calculation)"
+    dialect "java"
+    salience 400
+    when
+        $uc : Candidate(fieldOfStudy == 'Elektrotechnika')
+        $esr : ExamSubjectResult(examSubject in ('matematyka', 'fizyka'))
+    then
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired! " +
+                         "Exam result (sum of points) = " + $uc.getExamResult() + " + " + $esr.getExamResult() + " (" + $esr.getExamSubject() + ")");
+        modify($uc) {
+            setExamResult($uc.getExamResult() + $esr.getExamResult())
+        }
+        retract($esr);
+end
+
+// Pielęgniarstwo
+rule "Subject result summation / Pielęgniarstwo (exam_result_calculation)"
+    dialect "java"
+    salience 400
+    when
+        $uc : Candidate(fieldOfStudy == 'Pielęgniarstwo')
+        $esr : ExamSubjectResult(examSubject in ('chemia', 'biologia'))
+    then
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired! " +
+                         "Exam result (sum of points) = " + $uc.getExamResult() + " + " + $esr.getExamResult() + " (" + $esr.getExamSubject() + ")");
+        modify($uc) {
+            setExamResult($uc.getExamResult() + $esr.getExamResult())
+        }
+        retract($esr);
+end
+
+// Psychologia
+rule "Subject result summation / Psychologia (exam_result_calculation)"
+    dialect "java"
+    salience 400
+    when
+        $uc : Candidate(fieldOfStudy == 'Psychologia')
+        $esr : ExamSubjectResult(examSubject in ('język polski'))
+    then
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired! " +
+                         "Exam result (sum of points) = " + $uc.getExamResult() + " + " + $esr.getExamResult() + " (" + $esr.getExamSubject() + ")");
+        modify($uc) {
+            setExamResult($uc.getExamResult() + $esr.getExamResult())
+        }
+        retract($esr);
+end

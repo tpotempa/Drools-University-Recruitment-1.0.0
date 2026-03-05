@@ -1,0 +1,28 @@
+package pl.edu.atar.universityrecruitment.rules.virtuoso.noobligatory
+
+import pl.edu.atar.universityrecruitment.Candidate;
+import pl.edu.atar.universityrecruitment.ExamSubjectResult;
+
+// Kwalifikacja na podstawie egzaminu : Mnożenie wyniku z przedmiotu 
+// zdawanego na poziomie rozszerzonym przez 2
+
+// UWAGA: Wykorzystanie faktu $uc jest niezbędne TYLKO do wykonania zapisu do LOGGERA.
+// Bez konieczności logowania informacji albo przy stosowaniu jedynie
+// przejściowych / tymczasowych logów (ang. provisional) fakt $uc może być z reguły usunięty.
+rule "Subject result multiplication on exam level (exam_result_calculation)"
+    dialect "java"
+    salience 500
+    when
+        $uc : Candidate()
+        $esr : ExamSubjectResult(examLevel == 'rozszerzony')
+    then
+        modify($esr) {
+            setExamResult(2*$esr.getExamResult())
+        }
+
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired! Subject result multiplied * 2: " + $esr.getExamSubject() + " [" + $esr.getExamLevel() + ", " + $esr.getExamResult() + "]");
+
+        // Additional provisional logging.
+        System.out.println("Modify subject result * 2 " + $esr.getExamSubject());
+end

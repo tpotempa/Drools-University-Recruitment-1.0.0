@@ -1,0 +1,42 @@
+package pl.edu.atar.universityrecruitment.rules.intermediate.lower.twosetsofrulessalience
+
+import pl.edu.atar.universityrecruitment.Candidate;
+
+// Informatyka
+rule "Exam Qualification / Informatyka (two_sets_of_rules_salience)"
+    dialect "java"
+    salience 100
+    when
+        $uc : Candidate(examResult > 100, fieldOfStudy == "Informatyka")
+    then
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Exam qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end
+
+// Automatyka i robotyka
+rule "Exam Qualification / Automatyka i robotyka (two_sets_of_rules_salience)"
+    dialect "java"
+    salience 100
+    when
+        $uc : Candidate(examResult > 60, fieldOfStudy == "Automatyka i robotyka")
+    then
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Exam qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end
+
+// Elektrotechnika
+rule "Exam Qualification / Elektrotechnika (two_sets_of_rules_salience)"
+    dialect "java"
+    salience 100
+    when
+        $uc : Candidate(examResult > 80, fieldOfStudy == "Elektrotechnika")
+    then
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Exam qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end

@@ -1,0 +1,48 @@
+package pl.edu.atar.universityrecruitment.rules.elementary.onesetofrulesmodify
+
+import pl.edu.atar.universityrecruitment.Candidate;
+
+// Informatyka
+rule "Exam Qualification / Informatyka (one_set_of_rules_MODIFY)"
+    dialect "java"
+    when
+        $uc : Candidate(examResult > 100, fieldOfStudy == "Informatyka", counter < 10)
+    then
+        modify($uc) {
+            setAdmission(Boolean.TRUE),
+            setQualificationType("Exam qualification"),
+            incrementCounter()
+        }
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end
+
+// Automatyka i robotyka
+rule "Exam Qualification / Automatyka i robotyka (one_set_of_rules_MODIFY)"
+    dialect "java"
+    when
+        $uc : Candidate(examResult > 60, fieldOfStudy == "Automatyka i robotyka", counter < 10)
+    then
+        modify($uc) {
+            setAdmission(Boolean.TRUE),
+            setQualificationType("Exam qualification"),
+            incrementCounter()
+        }
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end
+
+// Elektrotechnika
+rule "Exam Qualification / Elektrotechnika (one_set_of_rules_MODIFY)"
+    dialect "java"
+    when
+        $uc : Candidate(examResult > 80, fieldOfStudy == "Elektrotechnika", counter < 10)
+    then
+        modify($uc) {
+            setAdmission(Boolean.TRUE),
+            setQualificationType("Exam qualification"),
+            incrementCounter()
+        }
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end

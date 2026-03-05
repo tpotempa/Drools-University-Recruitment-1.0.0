@@ -1,0 +1,22 @@
+package pl.edu.atar.universityrecruitment.rules.virtuoso.noobligatory
+
+import pl.edu.atar.universityrecruitment.Candidate;
+import pl.edu.atar.universityrecruitment.ExamSubjectResult;
+
+// Kwalifikacja na podstawie egzaminu : Odczytanie kolekcji wszystkich przedmiotów egzaminu maturalnego kandydata
+rule "Get subjects for exam qualification (exam_result_calculation)"
+    dialect "java"
+    salience 600
+    lock-on-active true
+    when
+        $uc : Candidate()
+        $esr : ExamSubjectResult() from $uc.examSubjectResult
+    then
+        insert($esr);
+        modify($uc) {}
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired! Subject added: " + $esr.getExamSubject() + " [" + $esr.getExamLevel() + ", " + $esr.getExamResult() + "]");
+
+        // Additional provisional logging.
+        System.out.println("Add subject " + $esr.getExamSubject());
+end

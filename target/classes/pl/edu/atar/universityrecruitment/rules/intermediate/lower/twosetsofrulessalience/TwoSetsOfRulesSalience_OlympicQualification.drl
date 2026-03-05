@@ -1,0 +1,16 @@
+package pl.edu.atar.universityrecruitment.rules.intermediate.lower.twosetsofrulessalience
+
+import pl.edu.atar.universityrecruitment.Candidate;
+
+// Kwalifikacja olimpijska
+rule "Olympic qualification (two_sets_of_rules_salience)"
+    dialect "java"
+    salience 200
+    when
+        $uc : Candidate(olympicFinalist == true)
+    then
+        $uc.setAdmission(true);
+        $uc.setQualificationType("Olympic qualification");
+        $uc.appendLogger("Agenda '" + drools.getKieRuntime().getAgenda().toString() + "' got focus!");
+        $uc.appendLogger("Rule '" + drools.getRule().getName() + "' from package '" + drools.getRule().getPackageName() + "' fired!");
+end

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+
+    <kbase name="basic" packages="pl.edu.atar.universityrecruitment.rules.basic" default="true">
+        <ksession name="stateless___basic" type="stateless" default="true"/>
+    </kbase>
+
+    <kbase name="elementary.one_set_of_rules" packages="pl.edu.atar.universityrecruitment.rules.elementary.onesetofrules">
+        <ksession name="stateless___elementary.one_set_of_rules" type="stateless"/>
+    </kbase>
+    <kbase name="elementary.one_set_of_rules_modify" packages="pl.edu.atar.universityrecruitment.rules.elementary.onesetofrulesmodify">
+        <ksession name="stateless___elementary.one_set_of_rules_modify" type="stateless"/>
+    </kbase>
+    <kbase name="elementary.one_set_of_rules_no-loop_modify" packages="pl.edu.atar.universityrecruitment.rules.elementary.onesetofrulesnoloopmodify">
+        <ksession name="stateless___elementary.one_set_of_rules_no-loop_modify" type="stateless"/>
+    </kbase>
+
+    <kbase name="intermediate.lower.two_sets_of_rules" packages="pl.edu.atar.universityrecruitment.rules.intermediate.lower.twosetsofrules">
+        <ksession name="stateless___intermediate.lower.two_sets_of_rules"/>
+    </kbase>
+    <kbase name="intermediate.lower.two_sets_of_rules_salience" packages="pl.edu.atar.universityrecruitment.rules.intermediate.lower.twosetsofrulessalience">
+        <ksession name="stateless___intermediate.lower.two_sets_of_rules_salience"/>
+    </kbase>
+    <kbase name="intermediate.lower.two_sets_of_rules_salience_activation-group" packages="pl.edu.atar.universityrecruitment.rules.intermediate.lower.twosetsofrulessalienceactivationgroup">
+        <ksession name="stateless___intermediate.lower.two_sets_of_rules_salience_activation-group"/>
+    </kbase>
+
+    <kbase name="intermediate.middle.two_sets_of_rules_salience_no-loop_modify" packages="pl.edu.atar.universityrecruitment.rules.intermediate.middle.twosetsofrulessaliencenoloopmodify">
+        <ksession name="stateless___intermediate.middle.two_sets_of_rules_salience_no-loop_modify"/>
+    </kbase>
+    <kbase name="intermediate.middle.two_sets_of_rules_salience_no-loop_one_modify" packages="pl.edu.atar.universityrecruitment.rules.intermediate.middle.twosetsofrulessaliencenolooponemodify">
+        <ksession name="stateless___intermediate.middle.two_sets_of_rules_salience_no-loop_one_modify"/>
+    </kbase>
+    <kbase name="intermediate.middle.two_sets_of_rules_salience_lock-on-active_modify" packages="pl.edu.atar.universityrecruitment.rules.intermediate.middle.twosetsofrulessaliencelockonactivemodify">
+        <ksession name="stateless___intermediate.middle.two_sets_of_rules_salience_lock-on-active_modify"/>
+    </kbase>
+
+    <kbase name="intermediate.upper.two_sets_of_rules_salience_activation-group_modify" packages="pl.edu.atar.universityrecruitment.rules.intermediate.upper.twosetsofrulessalienceactivationgroupmodify">
+        <ksession name="stateless___intermediate.upper.two_sets_of_rules_salience_activation-group_modify"/>
+    </kbase>
+    <kbase name="intermediate.upper.two_sets_of_rules_salience_activation-group_no-loop_modify" packages="pl.edu.atar.universityrecruitment.rules.intermediate.upper.twosetsofrulessalienceactivationgroupnoloopmodify">
+        <ksession name="stateless___intermediate.upper.two_sets_of_rules_salience_activation-group_no-loop_modify"/>
+    </kbase>
+    <kbase name="intermediate.upper.two_sets_of_rules_salience_activation-group_lock-on-active_modify" packages="pl.edu.atar.universityrecruitment.rules.intermediate.upper.twosetsofrulessalienceactivationgrouplockonactivemodify">
+        <ksession name="stateless___intermediate.upper.two_sets_of_rules_salience_activation-group_lock-on-active_modify"/>
+    </kbase>
+
+    <kbase name="knowledgeable" packages="pl.edu.atar.universityrecruitment.rules.knowledgeable">
+        <ksession name="stateless___knowledgeable"/>
+    </kbase>
+
+    <kbase name="masterful" packages="pl.edu.atar.universityrecruitment.rules.masterful">
+        <ksession name="stateless___masterful"/>
+    </kbase>
+
+    <kbase name="virtuoso.nobligatory" packages="pl.edu.atar.universityrecruitment.rules.virtuoso.noobligatory">
+        <ksession name="stateless___virtuoso.nobligatory"/>
+    </kbase>
+
+    <kbase name="virtuoso.obligatory.solutiona" packages="pl.edu.atar.universityrecruitment.rules.virtuoso.obligatory.solutiona">
+        <ksession name="stateless___virtuoso.obligatory.solutiona"/>
+    </kbase>
+    <kbase name="virtuoso.obligatory.solutionb" packages="pl.edu.atar.universityrecruitment.rules.virtuoso.obligatory.solutionb">
+        <ksession name="stateless___virtuoso.obligatory.solutionb"/>
+    </kbase>
+
+</kmodule>
