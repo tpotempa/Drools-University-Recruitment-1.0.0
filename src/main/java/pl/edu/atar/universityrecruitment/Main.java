@@ -64,6 +64,7 @@ public class Main {
                 // reguł DoNotFocusAutomatically_OlympicQualification.drl zakomentować n/w wiersz:
                 // agenda-group "do_not_focus_automatically"
                 // Po przeprowadzeniu testów należy odkomentować w/w wiersz.
+                knowledgeBaseName = "basic";
                 break;
 
             // REGUŁY ELEMENTARNE
